@@ -341,12 +341,11 @@ class Analyzer:
                             runtime_end = -1
                         for colume_name, colume_data in orgData.items():
                             if isinstance(colume_data, dict):
-                                output[field_type][data_group][node+"_"+colume_name] = OrderedDict()
+                                output[field_type][data_group][node][colume_name] = OrderedDict()
                                 for sub_colume_name, sub_colume_data in colume_data.items():
-                                    if isinstance(colume_data, list):
+                                    if isinstance(sub_colume_data, list):
                                         sub_colume_data = sub_colume_data[runtime_start:runtime_end]
-                                    output[field_type][data_group][node+"_"+colume_name][sub_colume_name] = sub_colume_data
-
+                                    output[field_type][data_group][node][colume_name][sub_colume_name] = sub_colume_data
                             elif isinstance(colume_data, list):
                                 colume_data = colume_data[runtime_start:runtime_end]
                                 if node not in output[field_type][data_group]:

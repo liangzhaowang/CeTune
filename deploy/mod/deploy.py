@@ -95,7 +95,7 @@ class Deploy(object):
             self.cluster["mdss"][mds] = ip_handler.getIpByHostInSubnet(mds)
 
         for osd in self.cluster["osds"]:
-            devices_id = self.translate_to_id(self.all_conf_data.get_list(osd))
+            devices_id = self.translate_to_id(osd, self.all_conf_data.get_list(osd))
             self.cluster[osd] = devices_id
 
         self.cluster["fs"] = "xfs"
